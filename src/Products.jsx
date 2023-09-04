@@ -29,30 +29,31 @@ function Products() {
       })
     );
   }
-
-  console.log(cart);
   return (
     <div className="products content">
       <h2>Products</h2>
       <div className="product-wrapper">
-        {products.map((product, index) => {
-          return (
-            <div className="product" key={index}>
-              <img src={product.image} alt="Product Photo" />
-              <h3>{product.title}</h3>
-              <p>{product.price}</p>
-              {checkProductInCart(product) ? (
-                <a href="" onClick={(e) => handleRemoveFromCart(e, product)}>
-                  Remove From Cart
-                </a>
-              ) : (
-                <a href="" onClick={(e) => handleAddToCart(e, product)}>
-                  Add To Cart
-                </a>
-              )}
-            </div>
-          );
-        })}
+        {
+          products.map((product, index) => {
+              return (
+                <div className="product" key={index}>
+                  <img src={product.image} alt="Product Photo" />
+                  <h3>{product.title}</h3>
+                  <p>{product.price}</p>
+                  {checkProductInCart(product) ? (
+                    <a href="" onClick={(e) => handleRemoveFromCart(e, product)}>
+                      Remove From Cart
+                    </a>
+                  ) : (
+                    <a href="" onClick={(e) => handleAddToCart(e, product)}>
+                      Add To Cart
+                    </a>
+                  )}
+                </div>
+              );
+            })
+        }
+        
       </div>
     </div>
   );
