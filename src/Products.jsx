@@ -14,9 +14,9 @@ function Products() {
     e.preventDefault();
     setCart([...cart, product]);
   }
-  function checkProductInCart(ind) {
-    const itemInCart = cart.find((item, index) => {
-      return index === ind;
+  function checkProductInCart(product) {
+    const itemInCart = cart.find((item) => {
+      return item.id === product.id;
     });
     return itemInCart === undefined ? false : true;
   }
@@ -41,7 +41,7 @@ function Products() {
               <img src={product.image} alt="Product Photo" />
               <h3>{product.title}</h3>
               <p>{product.price}</p>
-              {checkProductInCart(index) ? (
+              {checkProductInCart(product) ? (
                 <a href="" onClick={(e) => handleRemoveFromCart(e, product)}>
                   Remove From Cart
                 </a>
