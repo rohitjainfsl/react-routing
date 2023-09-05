@@ -71,8 +71,11 @@ header ul a{
     height: 500px;
     margin-bottom: 2rem;
 }
-.product-wrapper .product img{
+.product-wrapper .product a{
     height: 60%;
+}
+.product-wrapper .product img{
+    height: 100%;
 }
 
 

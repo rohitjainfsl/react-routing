@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -37,8 +38,6 @@ function Products() {
     setCartInView(!cartInView);
   }
 
-  console.log(cart)
-
   function Cart() {
     return (
       <div
@@ -66,6 +65,10 @@ function Products() {
     );
   }
 
+  function trimmed(input){
+    return (input.split("").length > 50) ? input.slice(0, 51) + "..." : input
+  }
+
   return (
     <>
       <Cart />
@@ -78,8 +81,8 @@ function Products() {
                 <Link to={"/products/" + index}>
                   <img src={product.image} alt="Product Photo" />
                 </Link>
-                <h3>{product.title}</h3>
-                <p>{product.price}</p>
+                <h3>{trimmed(product.title)}</h3>
+                <p><span><AttachMoneyIcon /></span>{product.price}</p>
                 {checkProductInCart(product) ? (
                   <a href="" onClick={(e) => handleRemoveFromCart(e, product)}>
                     Remove From Cart
